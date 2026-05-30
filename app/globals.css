@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.text-shadow {
+  text-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+}
