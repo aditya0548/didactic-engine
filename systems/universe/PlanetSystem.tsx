@@ -113,19 +113,41 @@ function SinglePlanet({ planet, index }: { planet: Planet; index: number }) {
       {/* Orbit Ring */}
       <Line
         points={orbitPoints}
-        color="#ffffff"
-        opacity={0.05}
+        color={planet.color}
+        opacity={0.15}
         transparent
-        lineWidth={1}
+        lineWidth={0.5}
       />
 
       {/* The Planet */}
       <group ref={planetRef}>
-        <Sphere args={[2, 32, 32]} onClick={() => setCurrentPlanet(planet.id)}>
+        {/* Core Planet */}
+        <Sphere args={[2, 64, 64]} onClick={() => setCurrentPlanet(planet.id)}>
           <meshStandardMaterial
             color={planet.color}
-            roughness={0.7}
-            metalness={0.2}
+            roughness={0.8}
+            metalness={0.1}
+            bumpScale={0.05}
+          />
+        </Sphere>
+
+        {/* Planet Atmosphere Glow */}
+        <Sphere args={[2.2, 32, 32]}>
+          <meshBasicMaterial
+            color={planet.color}
+            transparent
+            opacity={0.15}
+            blending={THREE.AdditiveBlending}
+            side={THREE.BackSide}
+          />
+        </Sphere>
+        <Sphere args={[2.4, 32, 32]}>
+          <meshBasicMaterial
+            color={planet.color}
+            transparent
+            opacity={0.05}
+            blending={THREE.AdditiveBlending}
+            side={THREE.BackSide}
           />
         </Sphere>
       </group>
